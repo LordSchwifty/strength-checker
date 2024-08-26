@@ -9,7 +9,8 @@ class App extends Component {
     super();
     this.state = {
       teaminfo: [],
-      playerinfo: []
+      playerinfo: [],
+      userinfo: []
       
     }
   }
@@ -30,11 +31,19 @@ class App extends Component {
                 }
                 return response.json();
             });
-            Promise.all([getPlayers, getTeams])
-            .then(([call1, call2]) => {
+        const getUsers = fetch('https://api.sleeper.app/v1/league/1048428157226868736/users')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            });
+            Promise.all([getPlayers, getTeams, getUsers])
+            .then(([call1, call2, call3]) => {
                 this.setState({
                     playerinfo: call1,
                     teaminfo: call2,
+                    userinfo: call3,
                     loading: false,
                 });
                 console.log(this.state)
