@@ -1,4 +1,5 @@
 import './App.css';
+import AllTeams from './Components/AllTeams';
 import Header from './Components/Header';
 import React, { Component } from 'react'
 
@@ -228,6 +229,7 @@ class App extends Component {
       
     }
   }
+
     componentDidMount() {
 
         const getPlayers = fetch('http://localhost:3000/players/nfl')
@@ -252,25 +254,17 @@ class App extends Component {
                 }
                 return response.json();
             });
-        const getRankings = fetch('https://api.fantasynerds.com/v1/nfl/dynasty?apikey=TEST')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            });
           
         
-            Promise.all([getPlayers, getTeams, getUsers, getRankings])
+            Promise.all([getPlayers, getTeams, getUsers])
             .then(([call1, call2, call3, call4]) => {
                 this.setState({
                     playerinfo: call1,
                     teaminfo: call2,
                     userinfo: call3,
-                    rankingsinfo: call4,
                     loading: false,
                 });
-                console.log(this.state)
+                // console.log(this.state)
             })
             .catch(error => {
                 this.setState({
@@ -278,13 +272,14 @@ class App extends Component {
                     loading: false,
                 });
             });
-    }
+  }
 
-     
-    
 render() {
     return (
+    <main>
       <Header />
+      <AllTeams rankings={this.state.dynastyRankings} users={this.state.userinfo} fantasyteam={this.state.teaminfo} players={this.state.playerinfo}/>
+    </main>
            
     )
   

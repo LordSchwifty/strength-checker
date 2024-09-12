@@ -1,7 +1,7 @@
 
 
 // function getTeams() {
-//     return fetch('https://api.sleeper.app/v1/league/1048428157226868736/rosters')
+//     return fetch(('https://api.sleeper.app/v1/league/1048428157226868736/rosters'))
 //     .then(response => response.json())
 // }
 // function getPlayers() {
