@@ -1,0 +1,24 @@
+.team-container {
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    display:flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    
+  }
+  
+  .team-name {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .team-rank {
+    font-size: 1.2em;
+    color: #555;
+  }
+
+  
+  
