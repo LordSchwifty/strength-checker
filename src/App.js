@@ -2,6 +2,9 @@ import './App.css';
 import AllTeams from './Components/AllTeams';
 import Header from './Components/Header';
 import React, { Component } from 'react'
+import TeamDetails from './Components/TeamDetails';
+import Form from './Components/Form';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // import { getTeams, getPlayers } from './APICalls';
 
@@ -13,6 +16,7 @@ class App extends Component {
       playerinfo: [],
       userinfo: [],
       rankingsinfo: [],
+      leagueId:'1048428157226868736',
       dynastyRankings: [
         { name: "Justin Jefferson", team: "MIN", ranking: 1 },
         { name: "CeeDee Lamb", team: "DAL", ranking: 2 },
@@ -229,8 +233,16 @@ class App extends Component {
       
     }
   }
+  updateLeagueId = (newLeagueId) => {
+    this.setState({leagueId: newLeagueId}, this.fetchData)
 
-    componentDidMount() {
+  }
+   
+  componentDidMount() {
+    this.fetchData()
+  }
+    fetchData = () => {
+      const{ leagueId } = this.state
 
         const getPlayers = fetch('http://localhost:3000/players/nfl')
             .then(response => {
@@ -240,14 +252,14 @@ class App extends Component {
                 return response.json();
             });
 
-        const getTeams = fetch('https://api.sleeper.app/v1/league/1048428157226868736/rosters')
+        const getTeams = fetch(`https://api.sleeper.app/v1/league/${leagueId}/rosters`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 return response.json();
             });
-        const getUsers = fetch('https://api.sleeper.app/v1/league/1048428157226868736/users')
+        const getUsers = fetch(`https://api.sleeper.app/v1/league/${leagueId}/users`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -274,16 +286,44 @@ class App extends Component {
             });
   }
 
-render() {
+  render() {
     return (
-    <main>
-      <Header />
-      <AllTeams rankings={this.state.dynastyRankings} users={this.state.userinfo} fantasyteam={this.state.teaminfo} players={this.state.playerinfo}/>
-    </main>
-           
-    )
-  
- }
+      <Router>
+        <main>
+          <Header />
+          <Form onSubmit={this.updateLeagueId} />
+
+          <Routes>
+            {/* Route to the team list */}
+            <Route
+              path="/"
+              element={
+                <AllTeams
+                  rankings={this.state.dynastyRankings}
+                  users={this.state.userinfo}
+                  fantasyteam={this.state.teaminfo}
+                  players={this.state.playerinfo}
+                />
+              }
+            />
+
+            {/* Route to display the details for a particular team */}
+            <Route
+              path="/team/:owners_id"
+              element={
+                <TeamDetails
+                   rankings={this.state.dynastyRankings}
+                  users={this.state.userinfo}
+                  fantasyteam={this.state.teaminfo}
+                  players={this.state.playerinfo}
+                />
+              }
+            />
+          </Routes>
+        </main>
+      </Router>
+    );
+  }
 }
 
 
