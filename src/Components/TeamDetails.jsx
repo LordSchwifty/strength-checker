@@ -14,9 +14,12 @@ function getPlayerDetailsByRoster(rosters, dynastyRankings, players, users) {
       const player = players.find(p => p.id === playerId);
 
       if (player) {
+        if(player.position === 'DEF'){
+            return null
+        }
         // Find the player's ranking in the dynastyRankings
         const ranking = dynastyRankings.find(r => r.name === player.name);
-        const playerRanking = ranking ? ranking.ranking : 225;  // Assign 225 if not found
+        const playerRanking = ranking ? ranking.ranking : 344;  // Assign 225 if not found
 
         // Return player details: name, position, and ranking
         return {
@@ -50,8 +53,12 @@ const TeamDetails = ({ fantasyteam, players, users, rankings }) => {
     if (roster) {
       // Use the getPlayerDetailsByRoster function to get details
       const teamInfo = getPlayerDetailsByRoster([roster], rankings, players, users); // We pass the roster in an array
-      setTeamDetails(teamInfo[0]);  // Since it's an array with one team, we take the first element
+      if(teamInfo[0] && teamInfo.length > 0){
+      
+      const sortedPlayers = teamInfo[0].players.sort((a,b) => a.ranking - b.ranking)
+      setTeamDetails({...teamInfo[0], players: sortedPlayers })// Since it's an array with one team, we take the first element
     }
+   } 
   }, [owners_id, fantasyteam, players, users, rankings]);
 
   if (!teamDetails) {

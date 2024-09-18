@@ -23,7 +23,7 @@ function getAverageRankByTeam(rosters, dynastyRankings, players, users) {
             acc.totalRank += ranking.ranking;
             acc.playerCount++;
           } else {
-            acc.totalRank += 225
+            acc.totalRank += 344
             acc.playerCount++
           }
         }
