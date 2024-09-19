@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Form.css'
 
 const Form = ({ onSubmit }) => {
     const [leagueId, setLeagueId] = useState('');
@@ -11,9 +12,8 @@ const Form = ({ onSubmit }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="league-form" onSubmit={handleSubmit}>
             <label>
-                Enter League ID:
                 <input
                   type="text"
                   value={leagueId}

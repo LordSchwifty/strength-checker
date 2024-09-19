@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Team from './Team'; // Import the Team component
 import { Link } from 'react-router-dom'; 
+import './AllTeams.css'
 
 // Define getAverageRankByTeam function
 function getAverageRankByTeam(rosters, dynastyRankings, players, users) {
@@ -23,7 +24,7 @@ function getAverageRankByTeam(rosters, dynastyRankings, players, users) {
             acc.totalRank += ranking.ranking;
             acc.playerCount++;
           } else {
-            acc.totalRank += 344
+            acc.totalRank += 400
             acc.playerCount++
           }
         }
@@ -40,7 +41,7 @@ function getAverageRankByTeam(rosters, dynastyRankings, players, users) {
 
     // Calculate average rank for all players
     const averageRankAllPlayers = calculateAverageRank(roster.players);
-    console.log(ownerId)
+    
 
     // Return an object with the team name, average rank for starters, and average rank for all players
     return {
@@ -73,7 +74,7 @@ const AllTeams = ({ fantasyteam, players, users, rankings }) => {
 
   return (
     <div>
-      <div>
+      <div className="button-section">
         <button onClick={() => setSortBy('starters')}>Sort by Average Rank (Starters)</button>
         <button onClick={() => setSortBy('allPlayers')}>Sort by Average Rank (All Players)</button>
       </div>

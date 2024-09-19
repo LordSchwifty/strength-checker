@@ -1,0 +1,46 @@
+/* App.css or any other CSS file */
+.team-details {
+    margin: 20px;
+  }
+  
+  .player-list {
+    display: block; /* List format */
+    margin: 0;
+    padding: 0;
+    list-style-type: none; /* Removes bullets */
+  }
+  
+  .player-card {
+    background-color: #393838;
+    border: 1px solid #99e6f1;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px; /* Add some spacing between cards */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+  }
+  
+  .player-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color:aliceblue
+  }
+  
+  .player-position,
+  .player-ranking {
+    font-size: 14px;
+    color: #f0e9e9;
+    margin-bottom: 2px;
+  }
+  
+  /* Optional: make the ranking more distinct */
+  .player-ranking {
+    font-weight: bold;
+    color: #83e490; /* Highlight the ranking */
+  }
+  
+  

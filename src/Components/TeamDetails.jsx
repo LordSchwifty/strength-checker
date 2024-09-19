@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import PlayerCard from './PlayerCard';
+import './TeamDetails.css'
 
 // The function to get the roster details with player positions and rankings
 function getPlayerDetailsByRoster(rosters, dynastyRankings, players, users) {
@@ -19,7 +21,7 @@ function getPlayerDetailsByRoster(rosters, dynastyRankings, players, users) {
         }
         // Find the player's ranking in the dynastyRankings
         const ranking = dynastyRankings.find(r => r.name === player.name);
-        const playerRanking = ranking ? ranking.ranking : 344;  // Assign 225 if not found
+        const playerRanking = ranking ? ranking.ranking : 400;  // Assign 225 if not found
 
         // Return player details: name, position, and ranking
         return {
@@ -66,16 +68,13 @@ const TeamDetails = ({ fantasyteam, players, users, rankings }) => {
   }
 
   return (
-    <div>
-      <h2>{teamDetails.team_name}</h2>
-      <h3>Players:</h3>
-      <ul>
+    <div className="team-details">
+      <h2 className="owner-team">{teamDetails.team_name}</h2>
+      <div className="player-list">
         {teamDetails.players.map((player, index) => (
-          <li key={index}>
-            {player.name} - {player.position} - Ranking: {player.ranking}
-          </li>
+          <PlayerCard key={index} player={player} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
