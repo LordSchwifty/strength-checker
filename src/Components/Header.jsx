@@ -2,7 +2,9 @@ import './Header.css'
 
 const Header = () => {
     return (
-        <h1>TBLBR Dynasty Strength Checker</h1>
+        <div className='header-section'>
+        <h1>Dynasty Rankings Checker</h1>
+        </div>
     )
 }
 
