@@ -121,7 +121,7 @@ class App extends Component {
   { ranking: 102, name: "Tua Tagovailoa", team: "MIA", position: "QB16", age: 26 },
   { ranking: 103, name: "Jaylen Warren", team: "PIT", position: "RB30", age: 25 },
   { ranking: 104, name: "Courtland Sutton", team: "DEN", position: "WR46", age: 28 },
-  { ranking: 105, name: "Marquise Brown", team: "KC", position: "WR47", age: 27 },
+  { ranking: 105, name: "Hollywood Brown", team: "KC", position: "WR47", age: 27 },
   { ranking: 106, name: "Isaiah Likely", team: "BAL", position: "TE13", age: 24 },
   { ranking: 107, name: "Ricky Pearsall", team: "SF", position: "WR48", age: 24 },
   { ranking: 108, name: "Jared Goff", team: "DET", position: "QB17", age: 29 },
