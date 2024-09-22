@@ -47,8 +47,6 @@ const TeamDetails = ({ fantasyteam, players, users, rankings }) => {
   const [teamDetails, setTeamDetails] = useState(null);  // Store team details
 
   useEffect(() => {
-    console.log("Owner ID:", owners_id);
-    console.log("Fantasy Team Data:", fantasyteam);
     // Filter the roster based on the owner_id
     const roster = fantasyteam.find(roster => roster.owner_id === owners_id);
 
