@@ -4,4 +4,21 @@
     align-items:center;
     justify-content: center;
     font-size: 25pt;
+    border: 1px solid darkgrey;
+}
+@media (max-width: 768px) {
+    .player-list-item {
+        flex-direction: column; /* Stack name and details vertically */
+        text-align: center;
+        padding: 5px; /* Reduced padding for mobile screens */
+    }
+
+    .player-list {
+        padding: 5px; /* Reduced padding for the entire player list */
+    }
+
+    .player-name,
+    .player-details {
+        font-size: 1.1em; /* Adjusted font size for mobile */
+    }
 }

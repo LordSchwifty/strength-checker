@@ -42,3 +42,14 @@
     color: white;
     border: none
   }
+
+  @media (max-width: 768px) {
+    .league-form {
+        width: 90%; /* Make the form take most of the mobile screen */
+        padding: 15px;
+    }
+
+    .league-form label {
+        font-size: 1em; /* Reduce font size for smaller screens */
+    }
+}

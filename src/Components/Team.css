@@ -17,9 +17,20 @@
   }
   
   .team-rank {
-    font-size: 1.2em;
+    font-size: 1em;
     color: #555;
   }
+  @media (max-width: 768px) {
+    .team-container {
+        flex-direction: row; /* Stack items on top of each other on mobile */
+        text-align: center;
+        padding: 5px;
+    }
 
+    .team-name,
+    .team-rank {
+        font-size: 1em; /* Smaller font size for mobile */
+    }
+}
   
   
